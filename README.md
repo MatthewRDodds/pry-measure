@@ -1,16 +1,19 @@
 # pry-measure
 ============
 
-Adds `pry-measure` command for measuring code snippets in pry.
+Adds `pry-measure` command for quick adhoc benchmarking.
 
 
 ## Installation
 
-$ gem install pry-measure
+  ```ruby
+  gem install pry-measure
+  ```
 
-or
-
-$ gem 'pry-measure'
+or added to the Gemfile:
+  ```ruby
+  gem 'pry-measure'
+  ```
 
 ## Usage
 
