@@ -1,14 +1,14 @@
+require "rubygems"
 require "bundler"
 Bundler.setup
 
-require "rspec/core/rake_task"
-Rspec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec)
 
-gemspec = eval(File.read("newgem.gemspec"))
+gemspec = eval(File.read("pry-measure.gemspec"))
 
 task :build => "#{gemspec.full_name}.gem"
 
-file "#{gemspec.full_name}.gem" => gemspec.files + ["newgem.gemspec"] do
-  system "gem build newgem.gemspec"
-  system "gem install newgem-#{NewGem::VERSION}.gem"
+file "#{gemspec.full_name}.gem" => gemspec.files + ["pry-measure.gemspec"] do
+  system "gem build pry-measure.gemspec"
+  system "gem install pry-measure-#{PryMeasure::VERSION}.gem"
 end
