@@ -7,5 +7,6 @@ module PryMeasure
 end
 
 require "pry-measure/measure_command"
+require "pry-measure/realtime_command"
 
 Pry.commands.import PryMeasure::Commands
