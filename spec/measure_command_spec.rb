@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "pry-measure" do
   it "prints results when given correct format" do
     output = mock_pry('pry-measure -t 10 #{1*2}', 'exit-all')
-    expect(output).to match('PryMeasure::Results')
+    expect(output).to match('0.0')
   end
 
   it "raises correct error when time is passed incorrectly" do
