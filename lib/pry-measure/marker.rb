@@ -24,7 +24,8 @@ module PryMeasure
 
     def self.average_results(results, execution_times, response={})
       [:real, :utime, :stime, :total].each do |key|
-        response.merge!(key =>(results.map(&key).inject(&:+) / execution_times.to_i).round(4))
+        rounded = results.map(&key).inject(&:+) / execution_times.to_i).round(4)
+        response[key] = rounded
       end
       response
     end

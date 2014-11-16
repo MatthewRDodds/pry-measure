@@ -1,5 +1,3 @@
-require "pry-measure/marker"
-
 PryMeasure::Commands.create_command "pry-measure" do
   description "Measure a block of code using Ruby's benchmark module"
 

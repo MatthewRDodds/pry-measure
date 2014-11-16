@@ -1,5 +1,3 @@
-require "pry-measure/marker"
-
 PryMeasure::Commands.create_command "pry-realtime" do
   description "Measure the execution time of code using Ruby's Benchmark.realtime"
 
