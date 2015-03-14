@@ -1,3 +1,20 @@
+# A better approach than using this gem
+
+Alternatively add something like this to your `.pryrc` file:
+
+```ruby
+def measure(execution_times, &b)
+  require 'benchmark'
+  
+  Benchmark.bm do |x|
+    execution_times.times do
+      x.report yield
+    end
+  end
+end
+```
+
+
 # pry-measure
 
 Adds `pry-measure` command for quick adhoc benchmarking.
