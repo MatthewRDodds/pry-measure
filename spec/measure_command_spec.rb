@@ -8,7 +8,7 @@ describe "pry-measure" do
 
   it "raises correct error when time is passed incorrectly" do
     output = mock_pry('pry-measure -t a #{1*2}', 'exit-all')
-    expect(output).to match('Error: -t should be an integer')
+    expect(output).to match('Error: a isn\'t an integer')
   end
 
   it "succeeds with default if time argument is not passed" do

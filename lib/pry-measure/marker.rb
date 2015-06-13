@@ -4,9 +4,7 @@ module PryMeasure
       Benchmark.bm do |x|
         test_times.times do
           x.report do
-            execution_times.times do
-              Kernel.eval code
-            end
+            execution_times.times { Kernel.eval code }
           end
         end
       end

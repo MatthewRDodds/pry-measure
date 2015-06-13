@@ -9,6 +9,6 @@ end
 require 'benchmark'
 require "pry-measure/marker"
 require "pry-measure/measure_command"
-require "pry-measure/realtime_command"
+require "pry-measure/helper_methods"
 
 Pry.commands.import PryMeasure::Commands
