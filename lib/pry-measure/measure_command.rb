@@ -1,10 +1,17 @@
 PryMeasure::Commands.create_command "pry-measure" do
   description "Measure a block of code using Ruby's benchmark module"
 
-  banner <<-BANNER
-    Usage: measure [ -t <times> -s ] <block>
+  TEST_TIMES_DESC = 'Times to execute test code (default: 10)'
+  EXEC_TIMES_DESC = 'Times to run benchmark (n times -t)'
 
-    Calls the block for the given amount of times (default 500) and returns benchmark results.
+  banner <<-BANNER
+    Usage: pry-measure [ -t <times> -c <times> ] <test code>
+
+    -t   #{TEST_TIMES_DESC}
+    -c   #{EXEC_TIMES_DESC}
+
+    Executes the code for the given amount of -t times (or default 10) 
+    and returns benchmark results.
   BANNER
 
   command_options(
@@ -14,26 +21,33 @@ PryMeasure::Commands.create_command "pry-measure" do
   )
 
   def setup
-    @times = 500
+    @test_times = 10
+    @exec_times = 1
   end
 
   def options(opt)
-    opt.on :s, :show, "Shows default benchmark output"
-    opt.on :t, :times, "Times to call block (default: 500)", optional: true, argument: true
+    opt.on :c, :count, EXEC_TIMES_DESC, optional: true, argument: true
+    opt.on :t, :times, TEST_TIMES_DESC, optional: true, argument: true
+  end
+
+  def validate(option)
+    unless is_int?(option)
+      raise Pry::CommandError, "#{option} isn't an integer"
+    end
+
+    option.to_i
   end
 
   def process
-    if opts[:times]
-      @times = opts[:times]
-      raise Pry::CommandError, "-t should be an integer" unless times_is_int?
-    end
+    @test_times = validate(opts[:count]) if opts[:count]
+    @exec_times = validate(opts[:times]) if opts[:times]
 
-    output = !opts[:show].nil?
+    code = args.join(' ')
 
-    PryMeasure::Marker.measure @times.to_i, arg_string, self, false, output
+    PryMeasure::Marker.measure @exec_times, @test_times, code
   end
 
-  def times_is_int?
-    !!(@times =~ /^[-+]?[0-9]+$/)
+  def is_int?(candidate)
+    !!(candidate =~ /^[-+]?[0-9]+$/)
   end
 end
