@@ -35,7 +35,7 @@ Additionally, `time_method` is added:
   Time elapsed 0.004 milliseconds
   ```
 
-## Usage
+## Pry Command Usage
 
   ```bash
   pry-measure -t 10 #{`curl http://google.com`}
@@ -50,9 +50,4 @@ The above passes the interpolated code to [Benchmark.measure](http://www.ruby-do
     :stime => 0.002,
     :total => 0.056
   }
-  ```
-
-  ```bash
-  pry-realtime #{`curl http://google.com`}
-  => 0.6405
   ```
