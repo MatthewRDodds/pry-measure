@@ -21,7 +21,7 @@ PryMeasure::Commands.create_command "pry-measure" do
   )
 
   def setup
-    @test_times = 10
+    @test_times = 1
     @exec_times = 1
   end
 

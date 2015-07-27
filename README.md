@@ -16,7 +16,7 @@ or added to the Gemfile:
 
 ## Helper methods
 
-A `pry_measure` helper method is added which takes arguments for number of times to execute and number of times to run (defaults to 1 and 10, respectively):
+A `pry_measure` helper method is added which takes arguments for number of times to execute and number of times to run (both default to just 1):
 
   ```ruby
   pry(main)> pry_measure(2, 200000) do
