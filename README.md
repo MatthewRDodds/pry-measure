@@ -1,5 +1,7 @@
 # pry-measure
 
+[![Build Status](https://travis-ci.org/MatthewRDodds/pry-measure.svg?branch=master)](https://travis-ci.org/MatthewRDodds/pry-measure)
+
 Adds `pry-measure` command for quick adhoc benchmarking.
 
 
